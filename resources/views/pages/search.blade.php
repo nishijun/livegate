@@ -8,22 +8,35 @@
   <div class="container">
     <label for="area">地域</label>
     <select id="area" name="area">
-      <option value=""></option>
+      @foreach ($provinces as $province)
+      <option value="{{$province->id}}">{{$province->name}}</option>
+      @endforeach
     </select><br><hr>
-    <label for="capa">キャパ</label>
+    <label for="capa">収容人数</label>
     <select id="capa" name="capa">
-      <option value=""></option>
+      <option value="1">〜100</option>
+      <option value="2">100〜300</option>
+      <option value="3">300〜500</option>
+      <option value="4">500〜1000</option>
+      <option value="5">1000〜</option>
     </select><br><hr>
     <label for="smoke">喫煙</label>
     <select id="smoke" name="smoke">
-      <option></option>
+      <?php $i = 1 ?>
+      @foreach ($smokes as $smoke)
+      <option value="<?= $i ?>">{{$smoke}}</option>
+      <?php $i++ ?>
+      @endforeach
     </select><br><hr>
     <label for="gen">ジャンル</label>
     <input type="checkbox" name="gen" value="rock">ロック
     <input type="checkbox" name="gen" value="rock">ロック
     <input type="checkbox" name="gen" value="rock">ロック
     <input type="checkbox" name="gen" value="rock">ロック
-    <input type="checkbox" name="gen" value="rock">ロック
+    <input type="checkbox" name="gen" value="rock">ロック<br><hr>
+    <label for="test">音源審査</label>
+    <input id="test" type="checkbox" name="test" value="">あり
+    <input id="test" type="checkbox" name="test" value="">なし
     <div class="reset button text-center">リセットする</div>
   </div>
 </main>

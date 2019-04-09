@@ -19,4 +19,6 @@ Route::get('/signup', "PagesController@signup");
 Route::get('/result', "PagesController@result");
 Route::get('/search', "PagesController@search");
 Route::get('/result/{id}', "PagesController@show");
-Route::get('/sendMessage', "PagesController@sendMessage");
+Route::post('/signup', "PagesController@store");
+Route::get('/result/{id}/sendMessage', "PagesController@sendMessage");
+Route::get('/result/{id}/evaluate', "PagesController@evaluate");

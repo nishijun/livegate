@@ -22,11 +22,16 @@ class PagesController extends Controller {
     return view("pages.signup", compact("smokes", "provinces", "genres"));
   }
 
+  public function store() {
+    $inputs = \Request::all();
+    dd($inputs);
+  }
+
   public function result() {
     $livehouses = Livehouse::all();
     $evaluations = Evaluation::all();
 
-    return view("pages.result", compact("livehouses", "evaluations"));
+    return view("pages.result", compact("livehouses", "evaluations", "province"));
   }
 
   public function search() {
@@ -38,11 +43,20 @@ class PagesController extends Controller {
   }
 
   public function show($id) {
+    $livehouses = Livehouse::all();
     $livehouse = Livehouse::findOrFail($id);
-    return view("pages.show", compact("livehouse"));
+    return view("pages.show", compact("livehouses", "livehouse"));
   }
 
-  public function sendMessage() {
-    return view("pages.sendMessage");
+  public function sendMessage($id) {
+    $livehouses = Livehouse::all();
+    $livehouse = Livehouse::findOrFail($id);
+    return view("pages.sendMessage", compact("livehouses", "livehouse"));
+  }
+
+  public function evaluate($id) {
+    $livehouses = Livehouse::all();
+    $livehouse = Livehouse::findOrFail($id);
+    return view("pages.evaluate", compact("livehouses", "livehouse"));
   }
 }

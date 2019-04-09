@@ -5,8 +5,6 @@ html, body {
   height: 100%;
 }
 a {
-  display: inline-block;
-  width: 100%;
 }
 a:hover {
   text-decoration: none;
@@ -242,7 +240,7 @@ input[type=file] {
 
 /* Search.blade.php */
 .save-qualifications {
-  float: left;
+  float: left!important;
   font-size: 20px;
   line-height: 70px;
   text-decoration: none;

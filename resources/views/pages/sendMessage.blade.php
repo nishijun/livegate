@@ -1,6 +1,7 @@
 @extends("layout")
 @section("content")
-<header class="bg-white header-fixation">
+<header class="bg-white header-fixation px-3">
+  <a href="/result/{{$livehouse->id}}" class="save-qualifications"><i class="fas fa-chevron-left mr-2"></i>戻る</a>
   <h1 class="text-center py-2 text-muted">メール送信</h1>
 </header>
 <main class="px-3">

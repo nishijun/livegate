@@ -8,6 +8,6 @@ class Province extends Model
 {
   public function livehouses()
     {
-        return $this->hasMany('Livehouse', "province_id");
+        return $this->hasMany('App\Livehouse');
     }
 }
