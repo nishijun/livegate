@@ -8,6 +8,7 @@ use App\Province;
 use App\Livehouse;
 use App\Evaluation;
 use App\Genre;
+use Helper;
 
 class PagesController extends Controller {
   public function index() {
@@ -29,9 +30,7 @@ class PagesController extends Controller {
 
   public function result() {
     $livehouses = Livehouse::all();
-    $evaluations = Evaluation::all();
-
-    return view("pages.result", compact("livehouses", "evaluations", "province"));
+    return view("pages.result", compact("livehouses"));
   }
 
   public function search() {

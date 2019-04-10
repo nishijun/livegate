@@ -234,13 +234,13 @@ input[type=file] {
   box-shadow: 0 3px 6px rgba(0, 0, 0, .16);
 }
 .col-12 > a, .col-5 > a {
-  /* display: inline-block;
-  width: 100%; */
+  display: inline-block;
+  width: 100%;
 }
 
 /* Search.blade.php */
 .save-qualifications {
-  float: left!important;
+  float: left;
   font-size: 20px;
   line-height: 70px;
   text-decoration: none;

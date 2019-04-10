@@ -9,8 +9,7 @@ class Livehouse extends Model
   protected $fillable = ['email', 'province_id', "price", "smoking_type", "test", 'published_at'];
 
   public function evaluations(){
-		// 投稿はたくさんのコメントを持つ
-		return $this->hasMany('Evaluation', 'livehouse_id');
+		return $this->hasMany('App\Evaluation', 'livehouse_id');
 	}
 
   public function province() {
@@ -18,6 +17,6 @@ class Livehouse extends Model
   }
 
   public function genres() {
-    return  $this->belongsToMany("Genre")->withTimestamps();
+    return  $this->belongsToMany("App\Genre")->withTimestamps();
   }
 }
