@@ -9,44 +9,57 @@ use App\Evaluation;
 use App\Genre;
 
 class Helper {
-  public static function getAveEvaluations($id) {
-    // $getEvaluations = [];
-    //
-    // $a = Evaluation::whereHas("livehouse", function($q) {
-    //   $q->where('id', "=", $id);
-    // })->get();
+  public static function getAveEvaluations($id, $i) {
 
     $evaluations = Evaluation::where("livehouse_id", $id)->get();
 
-    // dd($evaluations);
+    $equipments = [];
+    $acoustics = [];
+    $staffs = [];
+    $facilities = [];
+    $accesses = [];
+    $foods = [];
 
-    $equipment = [];
-    $acoustic = [];
-    $staff = [];
-    $facility = [];
-    $access = [];
-    $food = [];
+    $ave_evaluations = [];
+    $results = [];
 
     foreach ($evaluations as $evaluation) {
-      $equipment[] = $evaluation->equipment;
-      $acoustic[] = $evaluation->acoustic;
-      $staff[] = $evaluation->staff;
-      $facility[] = $evaluation->facility;
-      $access[] = $evaluation->access;
-      $food[] = $evaluation->food;
+      $equipments[] = $evaluation->equipment;
+      $acoustics[] = $evaluation->acoustic;
+      $staffs[] = $evaluation->staff;
+      $facilities[] = $evaluation->facility;
+      $accesses[] = $evaluation->access;
+      $foods[] = $evaluation->food;
     }
 
-    dd($equipment);
+    $groups = [$equipments, $acoustics, $staffs, $facilities, $accesses, $foods];
 
-    // $group = [
-    //   array_sum($equipment)/count($equipment),
-    //   array_sum($acoustic)/count($acoustic),
-    //   array_sum($staff)/count($staff),
-    //   array_sum($facility)/count($facility),
-    //   array_sum($access)/count($access),
-    //   array_sum($food)/count($food)
-    // ];
-    //
-    // return $group;
+    foreach ($groups as $group) {
+      $sum = 0;
+      foreach($group as $value) {
+        $sum += $value;
+      }
+      $ave = 0;
+      $round = 0;
+      $ave = $sum / count($group);
+      $round = round($ave, 1);
+      $ave_evaluations[] = $round;
+    }
+
+    for ($a = 0; $a < count($ave_evaluations); $a++) {
+      $results[] = intval($ave_evaluations[$a]);
+    }
+    return $results[$i];
   }
+
+  // public static function getComments($id, $i) {
+  //   $evaluations = Evaluation::where("livehouse_id", $id)->get();
+  //   $comments = [];
+  //
+  //   foreach($evaluations as $evaluation) {
+  //     $comments[] = $evaluation->body;
+  //   }
+  //
+  //   return $comments[$i];
+  // }
 }

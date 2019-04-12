@@ -16,7 +16,7 @@ class PagesController extends Controller {
   }
 
   public function signup() {
-    $provinces = Province::all();
+    $provinces = Province::all()->pluck("name", "id");
     $genres = Genre::all();
 
     $smokes = ["喫煙可", "分煙", "禁煙"];
@@ -25,12 +25,14 @@ class PagesController extends Controller {
 
   public function store() {
     $inputs = \Request::all();
-    dd($inputs);
+    Livehouse::create($inputs);
+
+    return redirect("result");
   }
 
   public function result() {
     $livehouses = Livehouse::all();
-    return view("pages.result", compact("livehouses"));
+    return view("pages.result", compact("livehouses", "livehouse"));
   }
 
   public function search() {
@@ -44,7 +46,9 @@ class PagesController extends Controller {
   public function show($id) {
     $livehouses = Livehouse::all();
     $livehouse = Livehouse::findOrFail($id);
-    return view("pages.show", compact("livehouses", "livehouse"));
+    $evaluations = Evaluation::where("livehouse_id", $id)->get();
+
+    return view("pages.show", compact("livehouses", "livehouse", "evaluations"));
   }
 
   public function sendMessage($id) {

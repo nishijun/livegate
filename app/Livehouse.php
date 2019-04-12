@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Livehouse extends Model
 {
-  protected $fillable = ['email', 'province_id', "price", "smoking_type", "test", 'published_at'];
+  protected $fillable = ["name", "email", "province_id", "capacitie_type", "price", "smoking_type", "test", "catchcopy", "homepage"];
 
   public function evaluations(){
 		return $this->hasMany('App\Evaluation', 'livehouse_id');

@@ -6,85 +6,52 @@
 </header>
 <main class="profile">
   <div class="container">
-    {!! Form::open() !!}
+    {!! Form::open(["url" => "signup"]) !!}
       <div class="form-group">
-        {!! Form::label("name", "Name") !!}
-        {!! Form::text("name", null, ["class" => "form-controll"]) !!}
+        {!! Form::label("name", "ライブハウス名") !!}
+        {!! Form::text("name", null, ["class" => "form-controll",  "placeholder" => "ライブハウス名を入力して下さい"]) !!}
       </div>
       <div class="form-group">
-        {!! Form::label("mail", "Mail") !!}
-        {!! Form::text("mail", null, ["class" => "form-controll"]) !!}
+        {!! Form::label("email", "メールアドレス") !!}
+        {!! Form::email("email", "", ["class" => "form-controll", "placeholder" => "メールアドレスを入力して下さい"]) !!}
       </div>
       <div class="form-group">
-        {!! Form::label("photo", "Photo") !!}
-        {!! Form::text("photo", null, ["class" => "form-controll"]) !!}
+        {!! Form::label("photo", "プロフィール写真") !!}
+        {!! Form::file("photo", ["class" => "form-controll"]) !!}
       </div>
       <div class="form-group">
-        {!! Form::label("address", "Address") !!}
-        {!! Form::text("address", null, ["class" => "form-controll"]) !!}
+        {!! Form::label("province_id", "所在地") !!}
+        {!! Form::select("province_id", $provinces, "", ["class" => "form-controll", "placeholder" => "選択して下さい"])!!}
       </div>
       <div class="form-group">
-        {!! Form::label("capacity", "Capacity") !!}
-        {!! Form::text("capacity", null, ["class" => "form-controll"]) !!}
+        {!! Form::label("capacitie_type", "観客収容人数") !!}
+        {!! Form::select("capacitie_type", ["〜50", "50〜100", "100〜300", "300〜500", "500〜1000", "1000〜"], "", ["class" => "form-controll", "placeholder" => "選択して下さい"]) !!}
       </div>
       <div class="form-group">
-        {!! Form::label("capacity", "Capacity") !!}
-        {!! Form::text("capacity", null, ["class" => "form-controll"]) !!}
+        {!! Form::label("smoking_type", "喫煙可否") !!}
+        {!! Form::select("smoking_type", ["禁煙", "分煙", "喫煙可"], "", ["class" => "font-controll", "placeholder" => "選択して下さい"]) !!}
       </div>
       <div class="form-group">
-        {!! Form::label("capacity", "Capacity") !!}
-        {!! Form::text("capacity", null, ["class" => "form-controll"]) !!}
+        {!! Form::label("test", "音源審査") !!}
+        {!! Form::radio("test", "1", true) !!}<span class="ml-2 mr-4">なし</span>
+        {!! Form::radio("test", "2") !!}<span class="ml-2">あり</span>
+      </div>
+      <div class="form-group">
+        {!! Form::label("price", "ライブ出演費") !!}
+        {!! Form::text("price", null, ["class" => "form-controll", "placeholder" => "凡そのノルマ金額を記入して下さい"]) !!}
+      </div>
+      <div class="form-group">
+        {!! Form::label("catchcopy", "一言コメント") !!}
+        {!! Form::text("catchcopy", null, ["class" => "form-controll", "placeholder" => "宣伝事項やコメントなどあれば記入して下さい"]) !!}
+      </div>
+      <div class="form-group">
+        {!! Form::label("homepage", "HPリンク") !!}
+        {!! Form::text("homepage", null, ["class" => "form-controll", "placeholder" => "HPやYouTubeへのリンクなどあれば記入して下さい"]) !!}
+      </div>
+      <div class="form-group">
+        {!! Form::submit("決定", ["class" => "form-controll button confirm text-center text-white mb-5 mx-auto"]) !!}
       </div>
     {!! Form::close() !!}
-
-
-
-    <form action="/result" method="post">
-      <label for="name">ライブハウス名</label>
-      <input id="name" type="text" name="name" placeholder="ライブハウス名を入力して下さい" required><br><hr>
-      <label for="mail">メールアドレス</label>
-      <input id="mail" type="email" name="mail" placeholder="メールアドレスを入力して下さい" required><br><hr>
-      <label for="photo">プロフィール写真</label>
-      <input id="photo" type="file" name="photo" value="アップロード"><br><hr>
-      <label for="address">所在地</label>
-      <select id="address" name="address" required>
-        @foreach ($provinces as $province)
-        <option value="{{$province->id}}">{{$province->name}}</option>
-        @endforeach
-      </select><br><hr>
-      <label for="capacity">収容人数</label>
-      <select id="capacity" name="capacity">
-        <option value="1">〜100</option>
-        <option value="2">100〜300</option>
-        <option value="3">300〜500</option>
-        <option value="4">500〜1000</option>
-        <option value="5">1000〜</option>
-      </select><br><hr>
-      <label for="smoking">喫煙可否</label>
-      <select id="smoking" name="smoking">
-        <?php $i = 1 ?>
-        @foreach($smokes as $smoke)
-        <option value="<?= $i ?>">{{$smoke}}</option>
-        <?php $i++ ?>
-        @endforeach
-      </select><br><hr>
-      <label for="genre">募集ジャンル<br><span>※複数選択可</span></label>
-      <input type="checkbox" name="genre" value="rock">ロック
-      <input class="ml-2" type="checkbox" name="genre" value="metal">メタル
-      <input class="ml-2" type="checkbox" name="genre" value="pops">ポップス
-      <input class="ml-2" type="checkbox" name="genre" value="R&B">R&B
-      <input class="ml-2" type="checkbox" name="genre" value="regee">レゲエ
-      <input class="ml-2" type="checkbox" name="genre" value="rap">ラップ
-      <input class="ml-2" type="checkbox" name="genre" value="country">カントリー<br><hr>
-      <label for="test">音源審査</label>
-      <input type="checkbox" name="test">あり
-      <input class="ml-3" type="checkbox" name="test">なし<br><hr>
-      <label for="catchcopy">一言宣伝事項</label>
-      <input type="text" name="catchcopy" placeholder="キャッチコピーや宣伝事項等あれば入力して下さい"><br><hr>
-      <label for="web">Webページリンク</label>
-      <input id="web" type="text" name="web" placeholder="HPやYouTubeのリンクを貼って下さい">
-    </form>
   </div>
-  <div class="button confirm text-center text-white mb-5">確認画面へ</div>
 </main>
 @endsection

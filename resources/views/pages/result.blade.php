@@ -14,7 +14,7 @@
 <main class="px-5" style="margin-top:90px;">
 <div class="row">
   @foreach ($livehouses as $livehouse)
-  <div class="col-5 text-center d-none d-md-block my-3 mx-3">
+  <div class="col-5 text-center my-3 mx-3">
     <a href="result/{{$livehouse->id}}">
       <div class="user-icon w-100 pb-3">
         ユーザーアイコン表示枠
@@ -30,13 +30,13 @@
       </div>
     </a>
   </div>
-  <div class="col-12 text-center d-md-none my-3">
+  <!-- <div class="col-12 text-center d-md-none my-3">
     <a href="result/{{$livehouse->id}}">
       <div>
         ユーザーアイコン表示枠
         <p class="ave-evaluation">{{$livehouse->ave_evaluation}}</p>
       </div>
-      <canvas class="chart" width="200" height="200"></canvas>
+      <canvas id="chart_{{$livehouse->id}}"></canvas>
       <div class="information">
         <h2 class="livehouse-name">{{$livehouse->name}}</h2>
         <p class="catchcopy">{{$livehouse->catchcopy}}</p>
@@ -46,7 +46,7 @@
         <p class="genre">ジャンル：</p>
       </div>
     </a>
-  </div>
+  </div> -->
   @endforeach
 </div>
 </main>
@@ -54,7 +54,7 @@
 (function() {
 "use strict";
 
-let ctx = document.getElementsByClassName("chart");
+let ctx = document.getElementById("chart_<?= $livehouse->id ?>");
 let myRadarChart = new Chart(ctx, {
   type: 'radar',
   data: {
@@ -62,12 +62,12 @@ let myRadarChart = new Chart(ctx, {
     datasets: [{
         label: '<?= $livehouse->name; ?>',
         data: [
-          <?= Helper::getAveEvaluations($livehouse->id)?>,
-          <?= Helper::getAveEvaluations($livehouse->id)?>,
-          <?= Helper::getAveEvaluations($livehouse->id)?>,
-          <?= Helper::getAveEvaluations($livehouse->id)?>,
-          <?= Helper::getAveEvaluations($livehouse->id)?>,
-          <?= Helper::getAveEvaluations($livehouse->id)?>
+          <?= Helper::getAveEvaluations($livehouse->id, 0);?>,
+          <?= Helper::getAveEvaluations($livehouse->id, 1);?>,
+          <?= Helper::getAveEvaluations($livehouse->id, 2);?>,
+          <?= Helper::getAveEvaluations($livehouse->id, 3);?>,
+          <?= Helper::getAveEvaluations($livehouse->id, 4);?>,
+          <?= Helper::getAveEvaluations($livehouse->id, 5);?>
         ],
         backgroundColor: 'RGBA(225,95,150, 0.5)',
         borderColor: 'RGBA(225,95,150, 1)',
@@ -86,7 +86,7 @@ let myRadarChart = new Chart(ctx, {
         suggestedMax: 5,
         stepSize: 1,
         callback: function(value, index, values){
-            return value;
+          return value;
         }
       }
     }
