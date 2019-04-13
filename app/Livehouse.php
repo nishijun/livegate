@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Livehouse extends Model
 {
@@ -18,5 +19,9 @@ class Livehouse extends Model
 
   public function genres() {
     return  $this->belongsToMany("App\Genre")->withTimestamps();
+  }
+
+  public function scopeCreated($query) {
+    $query->where("created_at", "<=", Carbon::now());
   }
 }

@@ -6,66 +6,57 @@
 </header>
 <main class="px-3">
 <div class="container">
-  <p class="text-center">各項目について評価して下さい</p>
-  <form class="" action="" method="post">
-    <label for="equipment">機材の種類や質、使い心地</label>
-    <select id="equipment">
-      <option value="0">0（論外）</option>
-      <option value="1">1（全くよくなかった）</option>
-      <option value="2">2（あまりよくなかった）</option>
-      <option value="3">3（普通）</option>
-      <option value="4">4（良かった）</option>
-      <option value="5">5（とても良かった）</option>
-    </select><br><hr>
-    <label for="acoustic">ライブ時の音響について</label>
-    <select id="acoustic">
-      <option value="0">0（論外）</option>
-      <option value="1">1（全くよくなかった）</option>
-      <option value="2">2（あまりよくなかった）</option>
-      <option value="3">3（普通）</option>
-      <option value="4">4（良かった）</option>
-      <option value="5">5（とても良かった）</option>
-    </select><br><hr>
-    <label for="staff">スタッフの対応について</label>
-    <select id="staff">
-      <option value="0">0（論外）</option>
-      <option value="1">1（全くよくなかった）</option>
-      <option value="2">2（あまりよくなかった）</option>
-      <option value="3">3（普通）</option>
-      <option value="4">4（良かった）</option>
-      <option value="5">5（とても良かった）</option>
-    </select><br><hr>
-    <label for="access">ライブハウスへのアクセスのしやすさ</label>
-    <select id="access">
-      <option value="0">0（論外）</option>
-      <option value="1">1（全くよくなかった）</option>
-      <option value="2">2（あまりよくなかった）</option>
-      <option value="3">3（普通）</option>
-      <option value="4">4（良かった）</option>
-      <option value="5">5（とても良かった）</option>
-    </select><br><hr>
-    <label for="facility">店内設備について</label>
-    <select id="facility">
-      <option value="0">0（論外）</option>
-      <option value="1">1（全くよくなかった）</option>
-      <option value="2">2（あまりよくなかった）</option>
-      <option value="3">3（普通）</option>
-      <option value="4">4（良かった）</option>
-      <option value="5">5（とても良かった）</option>
-    </select><br><hr>
-    <label for="food">飲食物の味</label>
-    <select id="food">
-      <option value="0">0（論外）</option>
-      <option value="1">1（全くよくなかった）</option>
-      <option value="2">2（あまりよくなかった）</option>
-      <option value="3">3（普通）</option>
-      <option value="4">4（良かった）</option>
-      <option value="5">5（とても良かった）</option>
-    </select><br><hr>
-    <label for="comment">コメント</label>
-    <textarea id="comment" name="content" rows="8" cols="80" placeholder="コメントがあれば入力して下さい"></textarea>
-  </form>
-  <div class="sendMessage mb-5">決定</div>
+  <p class="text-center font-weight-bold">各項目について評価して下さい</p>
+  @if ($errors->any())
+    <div class="alert alert-danger">
+      <ul>
+        @foreach($errors->all() as $error)
+          <li>{{$error}}</li>
+        @endforeach
+      </ul>
+    </div>
+  @endif
+  {!! Form::open(["url" => "result/$livehouse->id/evaluate"]) !!}
+    <div class="form-group d-none">
+      {!! Form::label("livehouse_id", "ライブハウス名") !!}
+      {!! Form::select("livehouse_id", ["$livehouse->id" => "$livehouse->name"], "", ["class" => "form-controll"])!!}
+    </div>
+    <div class="form-group">
+      {!! Form::label("equipment", "機材の質や種類、使い心地") !!}
+      {!! Form::select("equipment", ["0" => "0（論外）", "1" => "1（全くよくなかった）", "2" => "2（あまりよくなかった）", "3" => "3（普通）", "4" => "4（良かった）", "5" => "5（とても良かった）"], "", ["class" => "form-controll", "placeholder" => "選択して下さい"]) !!}
+    </div>
+    <div class="form-group">
+      {!! Form::label("acoustic", "ライブ時の音響について") !!}
+      {!! Form::select("acoustic", ["0" => "0（論外）", "1" => "1（全くよくなかった）", "2" => "2（あまりよくなかった）", "3" => "3（普通）", "4" => "4（良かった）", "5" => "5（とても良かった）"], "", ["class" => "form-controll", "placeholder" => "選択して下さい"]) !!}
+    </div>
+    <div class="form-group">
+      {!! Form::label("staff", "スタッフの対応について") !!}
+      {!! Form::select("staff", ["0" => "0（論外）", "1" => "1（全くよくなかった）", "2" => "2（あまりよくなかった）", "3" => "3（普通）", "4" => "4（良かった）", "5" => "5（とても良かった）"], "", ["class" => "form-controll", "placeholder" => "選択して下さい"]) !!}
+    </div>
+    <div class="form-group">
+      {!! Form::label("access", "アクセスしやすさについて") !!}
+      {!! Form::select("access", ["0" => "0（論外）", "1" => "1（全くよくなかった）", "2" => "2（あまりよくなかった）", "3" => "3（普通）", "4" => "4（良かった）", "5" => "5（とても良かった）"], "", ["class" => "form-controll", "placeholder" => "選択して下さい"]) !!}
+    </div>
+    <div class="form-group">
+      {!! Form::label("facility", "店内設備について") !!}
+      {!! Form::select("facility", ["0" => "0（論外）", "1" => "1（全くよくなかった）", "2" => "2（あまりよくなかった）", "3" => "3（普通）", "4" => "4（良かった）", "5" => "5（とても良かった）"], "", ["class" => "form-controll", "placeholder" => "選択して下さい"]) !!}
+    </div>
+    <div class="form-group">
+      {!! Form::label("food", "飲食物について") !!}
+      {!! Form::select("food", ["0" => "0（論外）", "1" => "1（全くよくなかった）", "2" => "2（あまりよくなかった）", "3" => "3（普通）", "4" => "4（良かった）", "5" => "5（とても良かった）"], "", ["class" => "form-controll", "placeholder" => "選択して下さい"]) !!}
+    </div>
+    <div class="form-group d-none">
+      {!! Form::label("ave_evaluation", "総合評価（平均）") !!}
+      {!! Form::select("ave_evaluation", ["3" => "内緒"]) !!}
+    </div>
+    <div class="form-group">
+      {!! Form::label("body", "コメント") !!}
+      {!! Form::textarea("body", null, ["class" => "form-controll", "placeholder" => "コメントがあれば記入して下さい"]) !!}
+    </div>
+    <div class="form-group">
+      {!! Form::submit("決定", ["class" => "form-controll button confirm text-center text-white mb-5 mx-auto"]) !!}
+    </div>
+  {!! Form::close() !!}
 </div>
 </main>
 @endsection

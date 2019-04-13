@@ -19,6 +19,7 @@ Route::get('/signup', "PagesController@signup");
 Route::get('/result', "PagesController@result");
 Route::get('/search', "PagesController@search");
 Route::get('/result/{id}', "PagesController@show");
-Route::post('/signup', "PagesController@store");
+Route::post('/signup', "PagesController@storeLivehouse");
+Route::post('/result/{id}/evaluate', "PagesController@storeEvaluation");
 Route::get('/result/{id}/sendMessage', "PagesController@sendMessage");
 Route::get('/result/{id}/evaluate', "PagesController@evaluate");

@@ -41,6 +41,9 @@ class Helper {
       }
       $ave = 0;
       $round = 0;
+      if (count($group) == 0) {
+        return false;
+      }
       $ave = $sum / count($group);
       $round = round($ave, 1);
       $ave_evaluations[] = $round;

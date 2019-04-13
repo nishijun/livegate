@@ -6,6 +6,15 @@
 </header>
 <main class="profile">
   <div class="container">
+    @if ($errors->any())
+      <div class="alert alert-danger">
+        <ul>
+          @foreach($errors->all() as $error)
+            <li>{{$error}}</li>
+          @endforeach
+        </ul>
+      </div>
+    @endif
     {!! Form::open(["url" => "signup"]) !!}
       <div class="form-group">
         {!! Form::label("name", "ライブハウス名") !!}

@@ -1,11 +1,12 @@
 @extends("layout")
 @section("content")
 <header class="bg-white px-3 header-fixation">
-  <a href="result" class="save-qualifications"><i class="fas fa-chevron-left mr-2"></i>保存</a>
+  <a href="result" class="save-qualifications"><i class="fas fa-chevron-left mr-2"></i>戻る</a>
   <h1 class="text-center py-2 text-muted">検索条件設定</h1>
 </header>
 <main class="set-qualifications">
   <div class="container">
+
     <label for="area">地域</label>
     <select id="area" name="area">
       @foreach ($provinces as $province)
