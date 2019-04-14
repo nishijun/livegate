@@ -23,3 +23,4 @@ Route::post('/signup', "PagesController@storeLivehouse");
 Route::post('/result/{id}/evaluate', "PagesController@storeEvaluation");
 Route::get('/result/{id}/sendMessage', "PagesController@sendMessage");
 Route::get('/result/{id}/evaluate', "PagesController@evaluate");
+Route::get('/search', 'PagesController@searchLivehouses');

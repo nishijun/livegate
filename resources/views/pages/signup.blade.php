@@ -42,8 +42,8 @@
       </div>
       <div class="form-group">
         {!! Form::label("test", "音源審査") !!}
-        {!! Form::radio("test", "1", true) !!}<span class="ml-2 mr-4">なし</span>
-        {!! Form::radio("test", "2") !!}<span class="ml-2">あり</span>
+        {!! Form::radio("test", "0", true) !!}<span class="ml-2 mr-4">なし</span>
+        {!! Form::radio("test", "1") !!}<span class="ml-2">あり</span>
       </div>
       <div class="form-group">
         {!! Form::label("price", "ライブ出演費") !!}
