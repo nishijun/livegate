@@ -8,7 +8,7 @@
 <div>ユーザーアイコン表示<p>ログイン日時表示</p></div>
 <div class="container">
   <table>
-    <tr><td class="title">地域</td><td>：{{$livehouse->province_id}}</td></tr>
+    <tr><td class="title">地域</td><td>：{{$livehouse->province->name}}</td></tr>
     <tr><td class="title">観客収容人数</td><td>：{{$livehouse->capacitie_type}}</td></tr>
     <tr><td class="title">喫煙可否</td><td>：{{$livehouse->smoking_type}}</td></tr>
     <tr><td class="title">ジャンル</td><td>：{{$livehouse->smoking_type}}</td></tr>

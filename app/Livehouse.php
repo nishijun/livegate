@@ -2,11 +2,12 @@
 
 namespace App;
 
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
 
-class Livehouse extends Model
-{
+class Livehouse extends Model {
+
   protected $fillable = ["name", "email", "province_id", "capacitie_type", "price", "smoking_type", "test", "catchcopy", "homepage"];
 
   public function evaluations(){

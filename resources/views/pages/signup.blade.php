@@ -34,16 +34,16 @@
       </div>
       <div class="form-group">
         {!! Form::label("capacitie_type", "観客収容人数") !!}
-        {!! Form::select("capacitie_type", ["〜50", "50〜100", "100〜300", "300〜500", "500〜1000", "1000〜"], "", ["class" => "form-controll", "placeholder" => "選択して下さい"]) !!}
+        {!! Form::select("capacitie_type", ["〜50" => "〜50", "50〜100" => "50〜100", "100〜300" => "100〜300", "300〜500" => "300〜500", "500〜1000" => "500〜1000", "1000〜" => "1000〜"], "", ["class" => "form-controll", "placeholder" => "選択して下さい"]) !!}
       </div>
       <div class="form-group">
         {!! Form::label("smoking_type", "喫煙可否") !!}
-        {!! Form::select("smoking_type", ["禁煙", "分煙", "喫煙可"], "", ["class" => "font-controll", "placeholder" => "選択して下さい"]) !!}
+        {!! Form::select("smoking_type", ["禁煙" => "禁煙", "分煙" => "分煙", "喫煙可" => "喫煙可"], "", ["class" => "font-controll", "placeholder" => "選択して下さい"]) !!}
       </div>
       <div class="form-group">
         {!! Form::label("test", "音源審査") !!}
-        {!! Form::radio("test", "0", true) !!}<span class="ml-2 mr-4">なし</span>
-        {!! Form::radio("test", "1") !!}<span class="ml-2">あり</span>
+        {!! Form::radio("test", "なし", true) !!}<span class="ml-2 mr-4">なし</span>
+        {!! Form::radio("test", "あり") !!}<span class="ml-2">あり</span>
       </div>
       <div class="form-group">
         {!! Form::label("price", "ライブ出演費") !!}

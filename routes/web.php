@@ -11,16 +11,41 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+// トップページview
 Route::get('/', "PagesController@index");
+
+// 新規登録画面view
 Route::get('/signup', "PagesController@signup");
-Route::get('/result', "PagesController@result");
-Route::get('/search', "PagesController@search");
-Route::get('/result/{id}', "PagesController@show");
-Route::post('/signup', "PagesController@storeLivehouse");
-Route::post('/result/{id}/evaluate', "PagesController@storeEvaluation");
-Route::get('/result/{id}/sendMessage', "PagesController@sendMessage");
-Route::get('/result/{id}/evaluate', "PagesController@evaluate");
+
+// 検索機能
 Route::get('/search', 'PagesController@searchLivehouses');
+
+// 検索結果画面view
+Route::get('/result', "PagesController@result");
+Route::post('/result', "PagesController@result");
+
+// 検索条件設定画面view
+// Route::get('/search', "PagesController@search");
+
+// ライブハウス詳細ページview
+Route::get('/result/{id}', "PagesController@show");
+
+// ライブハウス新規登録機能
+Route::post('/signup', "PagesController@storeLivehouse");
+
+// ユーザー評価新規登録機能
+Route::post('/result/{id}/evaluate', "PagesController@storeEvaluation");
+
+// メッセージ送信画面view
+Route::get('/result/{id}/sendMessage', "ContactController@sendMessage");
+
+// メッセージ送信内容確認ページview
+Route::get('/result/{id}/sendMessage/confirm', 'ContactController@confirm');
+Route::post('/result/{id}/sendMessage/confirm', 'ContactController@confirm');
+
+// メッセージ送信完了画面view
+Route::get('/result/{id}/sendMessage/complete', 'ContactController@complete');
+Route::post('/result/{id}/sendMessage/complete', 'ContactController@complete');
+
+// ユーザー評価画面view
+Route::get('/result/{id}/evaluate', "PagesController@evaluate");

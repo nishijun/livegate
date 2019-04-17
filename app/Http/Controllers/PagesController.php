@@ -36,32 +36,47 @@ class PagesController extends Controller {
     return redirect("result/".$id);
   }
 
-  public function result() {
-    // $livehouses = Livehouse::all();
-    $livehouses = Livehouse::latest("created_at")->latest("updated_at")->created()->get();
-    return view("pages.result", compact("livehouses", "livehouse"));
-  }
+  public function result(Request $request) {
 
-  public function search() {
-    $provinces = Province::all()->pluck("name", "id");
-    $genres = Genre::all();
+    $name = $request->input("name");
+    $province_id = $request->input("province_id");
+    $capacitie_type = $request->input("capacitie_type");
+    $smoking_type = $request->input("smoking_type");
+    $test = $request->input("test");
 
-    return view("pages.search", compact("provinces", "genres"));
+    $queries = [$name, $province_id, $capacitie_type, $smoking_type, $test];
+
+    if (
+      isset($name) ||
+      isset($province_id) ||
+      isset($capacitie_type) ||
+      isset($smoking_type) ||
+      isset($test)
+    ) {
+      $livehouses = Livehouse::when($name, function($q) use($name) {
+        $q->where("name", "like", "%".$name."%");
+      })->when($province_id, function($q) use($province_id){
+        $q->where("province_id", $province_id);
+      })->when($capacitie_type, function($q) use($capacitie_type){
+        $q->where("capacitie_type", $capacitie_type);
+      })->when($smoking_type, function($q) use($smoking_type){
+        $q->where("smoking_type", $smoking_type);
+      })->when($test, function($q) use($test){
+        $q->where("test", $test);
+      })->get();
+    } else {
+      $livehouses = Livehouse::latest("created_at")->latest("updated_at")->created()->get();
+    }
+
+    return view("pages.result", compact("livehouses"));
   }
 
   public function show($id) {
     $livehouses = Livehouse::all();
     $livehouse = Livehouse::findOrFail($id);
-    // $evaluations = Evaluation::where("livehouse_id", $id)->get();
     $evaluations = Evaluation::latest("created_at")->latest("updated_at")->created()->get();
 
     return view("pages.show", compact("livehouses", "livehouse", "evaluations"));
-  }
-
-  public function sendMessage($id) {
-    $livehouses = Livehouse::all();
-    $livehouse = Livehouse::findOrFail($id);
-    return view("pages.sendMessage", compact("livehouses", "livehouse"));
   }
 
   public function evaluate($id) {
@@ -72,30 +87,15 @@ class PagesController extends Controller {
   }
 
   public function searchLivehouses(Request $request) {
+    $provinces = Province::all()->pluck("name", "id");
+    $genres = Genre::all();
+
     $name = $request->input("name");
-    $provinces = $request->input("province_id");
+    $province_id = $request->input("province_id");
     $capacitie_type = $request->input("capacitie_type");
     $smoking_type = $request->input("smoking_type");
     $test = $request->input("test");
 
-    $inputs = [$name, $provinces, $capacitie_type, $smoking_type, $test];
-
-    if(
-      !isset($name) ||
-      !isset($provinces) ||
-      !isset($capacitie_type) ||
-      !isset($smoking_type) ||
-      !isset($test)
-    ){
-      $livehouses = Livehouse::where('name', 'like', '%'.$name.'%')
-        ->where("province_id", $provinces)
-        ->where("capacitie_type", $capacitie_type)
-        ->where("smoking_type", $smoking_type)
-        ->where("test", $test);
-    } else {
-      $livehouse = Livehouse::latest("created_at")->latest("updated_at")->created()->get();
-    }
-
-    return view("pages.result", compact("name", "provinces", "capacitie_type", "smoking_type", "test", "price", "catchcopy", "homepage"));
+    return view("pages.search", compact("provinces", "genres", "name", "province_id", "capacitie_type", "smoking_type", "test"));
   }
 }
