@@ -31,6 +31,7 @@ class LivehouseRequest extends FormRequest
           "smoking_type" => "required",
           "test" => "required",
           "price" => "required",
+          "img" => "image",
           "catchcopy" => "required",
           "homepage" => "required",
         ];

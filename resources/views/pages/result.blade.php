@@ -18,10 +18,14 @@
   <div class="col-5 text-center my-3 mx-3">
     <a href="result/{{$livehouse->id}}">
       <div class="user-icon w-100 pb-3">
-        ユーザーアイコン表示枠
+        @if($livehouse->img)
+          <img src="/img/{{$livehouse->img}}" class="usericon">
+        @else
+          <img src="/img/noimage.png" class="usericon">
+        @endif
       </div>
       <div class="information">
-        <p class="ave-evaluation">{{$livehouse->ave_evaluation}}</p>
+        <p class="ave-evaluation">総合評価：<?= number_format(Helper::getTotalEvaluations($livehouse->id), 2, ".", ""); ?></p>
         <h2 class="livehouse-name">{{$livehouse->name}}</h2>
         <p class="catchcopy">{{$livehouse->catchcopy}}</p>
         <p class="area">地域：{{$livehouse->province->name}}</p>

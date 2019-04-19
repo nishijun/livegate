@@ -15,7 +15,7 @@
         </ul>
       </div>
     @endif
-    {!! Form::open(["url" => "signup"]) !!}
+    {!! Form::open(["url" => "signup", "files" => true]) !!}
       <div class="form-group">
         {!! Form::label("name", "ライブハウス名") !!}
         {!! Form::text("name", null, ["class" => "form-controll",  "placeholder" => "ライブハウス名を入力して下さい"]) !!}
@@ -25,8 +25,8 @@
         {!! Form::email("email", "", ["class" => "form-controll", "placeholder" => "メールアドレスを入力して下さい"]) !!}
       </div>
       <div class="form-group">
-        {!! Form::label("photo", "プロフィール写真") !!}
-        {!! Form::file("photo", ["class" => "form-controll"]) !!}
+        {!! Form::label("img", "プロフィール写真") !!}
+        {!! Form::file("img", ["class" => "form-controll"]) !!}
       </div>
       <div class="form-group">
         {!! Form::label("province_id", "所在地") !!}

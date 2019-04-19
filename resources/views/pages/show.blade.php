@@ -5,7 +5,13 @@
   <h1 class="text-center">{{$livehouse->name}}</h1>
 </header>
 <main>
-<div>ユーザーアイコン表示<p>ログイン日時表示</p></div>
+<div>
+  @if($livehouse->img)
+    <img src="/img/{{$livehouse->img}}" class="usericon">
+  @else
+    <img src="/img/noimage.png" class="usericon">
+  @endif
+</div>
 <div class="container">
   <table>
     <tr><td class="title">地域</td><td>：{{$livehouse->province->name}}</td></tr>
@@ -17,6 +23,7 @@
   </table>
   <div class="chart">
     <canvas id="chart_{{$livehouse->id}}"></canvas>
+    <p><?= number_format(Helper::getTotalEvaluations($livehouse->id), 2, ".", ""); ?></p>
     <div class="comment-area mt-5">
         <?php
         $comments = [];

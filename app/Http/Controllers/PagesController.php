@@ -13,6 +13,7 @@ use App\Genre;
 use Helper;
 use App\Http\Requests\LivehouseRequest;
 use App\Http\Requests\EvaluationRequest;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class PagesController extends Controller {
   public function index() {
@@ -27,7 +28,22 @@ class PagesController extends Controller {
   }
 
   public function storeLivehouse(LivehouseRequest $request) {
-    Livehouse::create($request->validated());
+    $file = $request->file('img');
+    $fileName = str_random(20).'.'.$file->getClientOriginalExtension();
+    Image::make($file)->save(public_path('img/'.$fileName));
+    $livehouse = new Livehouse;
+    $livehouse->img = $fileName;
+    $livehouse->name = $request->input("name");
+    $livehouse->email = $request->input("email");
+    $livehouse->province_id = $request->input("province_id");
+    $livehouse->capacitie_type = $request->input("capacitie_type");
+    $livehouse->smoking_type = $request->input("smoking_type");
+    $livehouse->test = $request->input("test");
+    $livehouse->price = $request->input("price");
+    $livehouse->catchcopy = $request->input("catchcopy");
+    $livehouse->homepage = $request->input("homepage");
+    $livehouse->save();
+    // Livehouse::create($request->validated());
     return redirect("result");
   }
 
@@ -55,13 +71,13 @@ class PagesController extends Controller {
     ) {
       $livehouses = Livehouse::when($name, function($q) use($name) {
         $q->where("name", "like", "%".$name."%");
-      })->when($province_id, function($q) use($province_id){
+      })->when($province_id, function($q) use($province_id) {
         $q->where("province_id", $province_id);
-      })->when($capacitie_type, function($q) use($capacitie_type){
+      })->when($capacitie_type, function($q) use($capacitie_type) {
         $q->where("capacitie_type", $capacitie_type);
-      })->when($smoking_type, function($q) use($smoking_type){
+      })->when($smoking_type, function($q) use($smoking_type) {
         $q->where("smoking_type", $smoking_type);
-      })->when($test, function($q) use($test){
+      })->when($test, function($q) use($test) {
         $q->where("test", $test);
       })->get();
     } else {
