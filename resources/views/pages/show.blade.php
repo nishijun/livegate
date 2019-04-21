@@ -5,21 +5,21 @@
   <h1 class="text-center text-muted section-title">{{$livehouse->name}}</h1>
 </header>
 <main>
-<div>
-  @if($livehouse->img)
-    <img src="/img/{{$livehouse->img}}" class="usericon">
-  @else
-    <img src="/img/noimage.png" class="usericon">
-  @endif
-</div>
 <div class="container">
-  <table>
-    <tr><td class="title">地域</td><td>：{{$livehouse->province->name}}</td></tr>
-    <tr><td class="title">観客収容人数</td><td>：{{$livehouse->capacitie_type}}</td></tr>
-    <tr><td class="title">喫煙可否</td><td>：{{$livehouse->smoking_type}}</td></tr>
-    <tr><td class="title">ジャンル</td><td>：{{$livehouse->smoking_type}}</td></tr>
-    <tr><td class="title">音源審査</td><td>：{{$livehouse->test}}</td></tr>
-    <tr><td class="title">Web</td><td>：{{$livehouse->homepage}}</td></tr>
+  <div>
+    @if($livehouse->img)
+    <img src="/img/{{$livehouse->img}}" class="usericon-show">
+    @else
+    <img src="/img/noimage.png" class="usericon">
+    @endif
+  </div>
+  <p class="text-white bg-dark mt-3 mb-0 font-weight-bold text-center py-2">基本情報</p>
+  <table class="w-100 mb-3">
+    <tr><td class="title">地域</td><td class="fact">{{$livehouse->province->name}}</td></tr>
+    <tr><td class="title">観客収容人数</td><td class="fact">{{$livehouse->capacitie_type}}</td></tr>
+    <tr><td class="title">喫煙可否</td><td class="fact">{{$livehouse->smoking_type}}</td></tr>
+    <tr><td class="title">音源審査</td><td class="fact">{{$livehouse->test}}</td></tr>
+    <tr><td class="title">Web</td><td class="fact">{{$livehouse->homepage}}</td></tr>
   </table>
   <div class="chart">
     <canvas id="chart_{{$livehouse->id}}"></canvas>
