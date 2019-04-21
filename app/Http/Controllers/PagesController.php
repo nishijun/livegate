@@ -90,7 +90,7 @@ class PagesController extends Controller {
   public function show($id) {
     $livehouses = Livehouse::all();
     $livehouse = Livehouse::findOrFail($id);
-    $evaluations = Evaluation::latest("created_at")->latest("updated_at")->created()->get();
+    $evaluations = Evaluation::where("livehouse_id", $id)->latest("created_at")->latest("updated_at")->created()->get();
 
     return view("pages.show", compact("livehouses", "livehouse", "evaluations"));
   }

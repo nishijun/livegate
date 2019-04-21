@@ -11,9 +11,9 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <div class="collapse navbar-collapse bg-light" id="navbarSupportedContent">
     <ul class="navbar-nav ml-auto">
-      <li class="nav-item active"><a class="nav-link" href="#">ホーム</a></li>
+      <li class="nav-item"><a class="nav-link" href="#">ホーム</a></li>
       <li class="nav-item"><a class="nav-link" href="#how-to-use">使い方</a></li>
       <li class="nav-item"><a class="nav-link" href="#reason">選ばれる理由</a></li>
     </ul>
@@ -26,7 +26,7 @@
 <section class="top-wrapper text-center">
   <h1 class="text-white font-weight-bold">Live Gate</h1>
   <p>ライブハウスとプレイヤーのマッチングサービス</p>
-  <div class="button signup text-center mx-auto text-white"><a href="signup">新規登録<br><span class="livehouse">ライブハウスの方向け</span></a></div>
+  <div class="button signup text-center mx-auto text-white"><a href="signup">新規登録<br><span class="livehouse">サイト管理者専用</span></a></div>
   <div class="button search text-white text-center mx-auto"><a href="result">ライブハウスを探す</a></div>
 </section><!-- end of top-wrapper -->
 

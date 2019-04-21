@@ -2,7 +2,7 @@
 @section("content")
 <header class="bg-white px-3 header-fixation">
   <a href="result" class="save-qualifications"><i class="fas fa-chevron-left mr-2"></i>戻る</a>
-  <h1 class="text-center py-2 text-muted">検索条件設定</h1>
+  <h1 class="text-center text-muted section-title">検索条件設定</h1>
 </header>
 <main class="set-qualifications">
   <div class="container">
@@ -27,8 +27,8 @@
         {!! Form::label("test", "音源審査") !!}
         {!! Form::select("test", ["" => "選択して下さい", "なし" => "なし", "あり" => "あり"], $test, ["class" => "font-controll"]) !!}
       </div>
-      <div class="form-group">
-        {!! Form::submit("検索", ["class" => "form-controll button confirm text-center text-white mb-5 mx-auto"]) !!}
+      <div class="form-group text-center">
+        {!! Form::submit("検索", ["class" => "form-controll button confirm text-center text-white"]) !!}
       </div>
     {!! Form::close() !!}
   </div>

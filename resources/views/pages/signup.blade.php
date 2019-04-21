@@ -2,7 +2,7 @@
 @section("content")
 <header class="bg-white header-fixation px-3">
   <a href="/" class="save-qualifications"><i class="fas fa-chevron-left mr-2"></i>戻る</a>
-  <h1 class="text-center py-2 text-muted">プロフィール入力</h1>
+  <h1 class="text-center text-muted section-title">プロフィール入力</h1>
 </header>
 <main class="profile">
   <div class="container">
@@ -57,8 +57,8 @@
         {!! Form::label("homepage", "HPリンク") !!}
         {!! Form::text("homepage", null, ["class" => "form-controll", "placeholder" => "HPやYouTubeへのリンクなどあれば記入して下さい"]) !!}
       </div>
-      <div class="form-group">
-        {!! Form::submit("決定", ["class" => "form-controll button confirm text-center text-white mb-5 mx-auto"]) !!}
+      <div class="form-group text-center">
+        {!! Form::submit("決定", ["class" => "confirm button text-center text-white"]) !!}
       </div>
     {!! Form::close() !!}
   </div>

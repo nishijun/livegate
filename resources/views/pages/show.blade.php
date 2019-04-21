@@ -2,7 +2,7 @@
 @section("content")
 <header class="bg-white px-3">
   <a href="/result" class="save-qualifications"><i class="fas fa-chevron-left mr-2"></i>戻る</a>
-  <h1 class="text-center">{{$livehouse->name}}</h1>
+  <h1 class="text-center text-muted section-title">{{$livehouse->name}}</h1>
 </header>
 <main>
 <div>
@@ -23,8 +23,10 @@
   </table>
   <div class="chart">
     <canvas id="chart_{{$livehouse->id}}"></canvas>
-    <p><?= number_format(Helper::getTotalEvaluations($livehouse->id), 2, ".", ""); ?></p>
-    <div class="comment-area mt-5">
+    <p class="text-center mt-3 total-eva">総合評価：<span id="rateYo"></span><?= number_format(Helper::getTotalEvaluations($livehouse->id), 1, ".", ""); ?></p>
+    <div class="mt-5 comment">
+      <h2 id="switch">このライブハウスへのコメント<i id="changer" class="fas fa-chevron-down"></i></h2>
+      <div class="comment_area">
         <?php
         $comments = [];
         foreach($evaluations as $evaluation) {
@@ -32,15 +34,17 @@
         }
         for ($i = 0; $i < count($comments); $i++) : ?>
         <p><?= $comments[$i]?></p>
+        <hr>
         <?php endfor ?>
+      </div>
     </div>
   </div>
-  <div class="evaluation-button mb-5"><a href="/result/{{$livehouse->id}}/evaluate">評価する</a></div>
+</div>
+<div class="action-area">
+  <div class="evaluation-button button"><a href="/result/{{$livehouse->id}}/evaluate">評価する</a></div>
+  <div class="send-mail text-center button"><a href="/result/{{$livehouse->id}}/sendMessage">メールを送る</a></div>
 </div>
 </main>
-<footer class="show-footer">
-  <div class="send-mail mx-auto text-center"><a href="/result/{{$livehouse->id}}/sendMessage">メールを送る</a></div>
-</footer>
 <script>
 (function() {
 "use strict";
@@ -84,5 +88,15 @@ let myRadarChart = new Chart(ctx, {
   }
 });
 })();
+</script>
+<script>
+$(function() {
+  $('#rateYo').rateYo({
+    starWidth: "20px",
+    rating: 5,
+    halfStar: true,
+    readOnly: true
+  });
+});
 </script>
 @endsection

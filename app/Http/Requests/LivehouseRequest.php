@@ -26,6 +26,7 @@ class LivehouseRequest extends FormRequest
         return [
           "name" => "required",
           "email" => "required",
+          "img" => "required",
           "province_id" => "required",
           "capacitie_type" => "required",
           "smoking_type" => "required",
