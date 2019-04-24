@@ -17,10 +17,14 @@ class CreateLivehousesTable extends Migration
           $table->increments('id');
           $table->string('email')->unique();
           $table->unsignedInteger('province_id');
+          $table->unsignedInteger('genre_id');
           $table->integer('capacitie_type');
           $table->integer('price');
           $table->integer('smoking_type');
           $table->integer('test');
+          $table->string('img');
+          $table->string('catchcopy');
+          $table->string('homepage');
           $table->timestamps();
         });
     }

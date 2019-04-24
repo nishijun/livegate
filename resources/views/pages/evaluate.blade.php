@@ -45,13 +45,9 @@
       {!! Form::label("food", "飲食物について") !!}
       {!! Form::select("food", ["0" => "0（論外）", "1" => "1（全くよくなかった）", "2" => "2（あまりよくなかった）", "3" => "3（普通）", "4" => "4（良かった）", "5" => "5（とても良かった）"], "", ["class" => "form-controll", "placeholder" => "選択して下さい"]) !!}
     </div>
-    <div class="form-group d-none">
-      {!! Form::label("ave_evaluation", "総合評価（平均）") !!}
-      {!! Form::select("ave_evaluation", ["3" => "内緒"]) !!}
-    </div>
     <div class="form-group">
       {!! Form::label("body", "コメント") !!}
-      {!! Form::textarea("body", null, ["class" => "form-controll", "placeholder" => "コメントがあれば記入して下さい"]) !!}
+      {!! Form::textarea("body", null, ["class" => "form-controll", "placeholder" => "コメントを記入して下さい"]) !!}
     </div>
     <div class="form-group text-center">
       {!! Form::submit("決定", ["class" => "form-controll button confirm text-center text-white"]) !!}

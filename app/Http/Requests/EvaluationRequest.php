@@ -32,7 +32,6 @@ class EvaluationRequest extends FormRequest
           "facility" => "required",
           "food" => "required",
           "body" => "required",
-          "ave_evaluation" => "required",
         ];
     }
 }

@@ -11,9 +11,10 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-  <script src="jquery-3.3.1.min.js"></script>
+  <!-- <script src="jquery-3.3.1.min.js"></script> -->
   <script src="/js/app.js" defer></script>
   <script src="/js/accordion.js" defer></script>
+  <script src="/js/rateyo.js" defer></script>
 </head>
 <body>
   @yield('content')

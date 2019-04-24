@@ -21,10 +21,11 @@ class PagesController extends Controller {
   }
 
   public function signup() {
+    $genre_list = Genre::pluck("name", "id");
     $provinces = Province::all()->pluck("name", "id");
     $genres = Genre::all();
 
-    return view("pages.signup", compact("smokes", "provinces", "genres"));
+    return view("pages.signup", compact("smokes", "provinces", "genres", "genre_list"));
   }
 
   public function storeLivehouse(LivehouseRequest $request) {
@@ -43,7 +44,7 @@ class PagesController extends Controller {
     $livehouse->catchcopy = $request->input("catchcopy");
     $livehouse->homepage = $request->input("homepage");
     $livehouse->save();
-    // Livehouse::create($request->validated());
+    $livehouse->genres()->attach($request->input("genres"));
     return redirect("result");
   }
 
@@ -59,15 +60,17 @@ class PagesController extends Controller {
     $capacitie_type = $request->input("capacitie_type");
     $smoking_type = $request->input("smoking_type");
     $test = $request->input("test");
+    $genre_id = $request->input("genres");
 
-    $queries = [$name, $province_id, $capacitie_type, $smoking_type, $test];
+    $queries = [$name, $province_id, $capacitie_type, $smoking_type, $test, $genre_id];
 
     if (
       isset($name) ||
       isset($province_id) ||
       isset($capacitie_type) ||
       isset($smoking_type) ||
-      isset($test)
+      isset($test) ||
+      isset($genre_id)
     ) {
       $livehouses = Livehouse::when($name, function($q) use($name) {
         $q->where("name", "like", "%".$name."%");
@@ -79,6 +82,8 @@ class PagesController extends Controller {
         $q->where("smoking_type", $smoking_type);
       })->when($test, function($q) use($test) {
         $q->where("test", $test);
+      // })->whereHas("genres", function($q) use($genre_id){
+      //   $q->where($genre_id);
       })->get();
     } else {
       $livehouses = Livehouse::latest("created_at")->latest("updated_at")->created()->get();
@@ -111,7 +116,8 @@ class PagesController extends Controller {
     $capacitie_type = $request->input("capacitie_type");
     $smoking_type = $request->input("smoking_type");
     $test = $request->input("test");
+    $genre_id = $request->input("genres");
 
-    return view("pages.search", compact("provinces", "genres", "name", "province_id", "capacitie_type", "smoking_type", "test"));
+    return view("pages.search", compact("provinces", "genres", "name", "province_id", "capacitie_type", "smoking_type", "test", "genre_id"));
   }
 }

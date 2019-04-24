@@ -23,8 +23,13 @@ class CreateEvaluationsTable extends Migration
           $table->integer('access');
           $table->integer('facility');
           $table->integer('food');
-          $table->integer('ave_evaluation');
           $table->timestamps();
+
+          // 外部キー制約
+          $table->foreign('livehouse_id')
+                    ->references('id')
+                    ->on('livehouses')
+                    ->onDelete('cascade');
         });
     }
 

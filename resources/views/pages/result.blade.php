@@ -24,8 +24,13 @@
           <p class="text-center bg-dark text-white font-weight-bold py-1 mb-0">基本情報</p>
           <table class="w-100 result-table">
             <tr><td width="50%">所在地</td><td class="font-weight-bold">{{$livehouse->province->name}}</td></tr>
-            <tr><td>観客収容人数</td><td class="font-weight-bold">{{$livehouse->capacitie_type}}</td></tr>
+            <tr><td>キャパ</td><td class="font-weight-bold">{{$livehouse->capacitie_type}}</td></tr>
             <tr><td>喫煙可否</td><td class="font-weight-bold">{{$livehouse->smoking_type}}</td></tr>
+            <tr><td>ジャンル</td><td class="font-weight-bold">
+              @foreach ($livehouse->genres as $genre)
+                {{$genre->name}}
+              @endforeach
+            </td></tr>
           </table>
         </div>
       </a>

@@ -25,7 +25,6 @@
 <!-- top-wrapper -->
 <section class="top-wrapper text-center">
   <h1 class="text-white font-weight-bold">Live Gate</h1>
-  <p>ライブハウスとプレイヤーのマッチングサービス</p>
   <div class="button signup text-center mx-auto text-white"><a href="signup">新規登録<br><span class="livehouse">サイト管理者専用</span></a></div>
   <div class="button search text-white text-center mx-auto"><a href="result">ライブハウスを探す</a></div>
 </section><!-- end of top-wrapper -->
@@ -71,11 +70,6 @@
     <img src="../public/img/" alt="reason2">
     <h3>POINT 2</h3>
     <p>お好みの条件で絞れるので、<br>自分のニーズに合った<br>ライブハウスを探しやすい</p>
-  </div>
-  <div class="reason">
-    <img src="../public/img/" alt="reason3">
-    <h3>POINT 3</h3>
-    <p>WebページやYouTubeなどの<br>宣伝媒体に誘導して<br>プロモーションに活用可能！</p>
   </div>
 </section><!-- end of section3 -->
 </main>

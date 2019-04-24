@@ -27,6 +27,13 @@
         {!! Form::label("test", "音源審査") !!}
         {!! Form::select("test", ["" => "選択して下さい", "なし" => "なし", "あり" => "あり"], $test, ["class" => "font-controll"]) !!}
       </div>
+      <!-- <div class="form-group">
+        {!! Form::label("genres", "ジャンル") !!}
+        @foreach ($genres as $genre)
+        {!! Form::checkbox("genres[]", $genres, false, ["class" => "form-controll", "placeholder" => "選択して下さい"]) !!}
+        <span>{{$genre->name}}</span>
+        @endforeach
+      </div> -->
       <div class="form-group text-center">
         {!! Form::submit("検索", ["class" => "form-controll button confirm text-center text-white"]) !!}
       </div>

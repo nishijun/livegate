@@ -13,17 +13,24 @@
     <img src="/img/noimage.png" class="usericon">
     @endif
   </div>
+  <div class="catchcopy text-center">{{$livehouse->catchcopy}}</div>
   <p class="text-white bg-dark mt-3 mb-0 font-weight-bold text-center py-2">基本情報</p>
   <table class="w-100 mb-3">
-    <tr><td class="title">地域</td><td class="fact">{{$livehouse->province->name}}</td></tr>
-    <tr><td class="title">観客収容人数</td><td class="fact">{{$livehouse->capacitie_type}}</td></tr>
+    <tr><td class="title">所在地</td><td class="fact">{{$livehouse->province->name}}</td></tr>
+    <tr><td class="title">キャパ</td><td class="fact">{{$livehouse->capacitie_type}}</td></tr>
     <tr><td class="title">喫煙可否</td><td class="fact">{{$livehouse->smoking_type}}</td></tr>
     <tr><td class="title">音源審査</td><td class="fact">{{$livehouse->test}}</td></tr>
-    <tr><td class="title">Web</td><td class="fact">{{$livehouse->homepage}}</td></tr>
+    <tr><td class="title">ジャンル</td><td class="fact">
+      @foreach ($livehouse->genres as $genre)
+        {{$genre->name}}
+      @endforeach
+    </td></tr>
+    <tr><td class="title">ノルマ目安</td><td class="fact">{{$livehouse->price}}</td></tr>
+    <tr><td class="title">Web</td><td class="fact"><a href="{{$livehouse->homepage}}">{{$livehouse->homepage}}</a></td></tr>
   </table>
   <div class="chart">
     <canvas id="chart_{{$livehouse->id}}"></canvas>
-    <p class="text-center mt-3 total-eva">総合評価：<span id="rateYo"></span><?= number_format(Helper::getTotalEvaluations($livehouse->id), 1, ".", ""); ?></p>
+    <p class="text-center mt-3 total-eva">総合評価：<span id="rateYo"></span><?= number_format(Helper::getTotalEvaluations($livehouse->id), 2, ".", ""); ?></p>
     <div class="mt-5 comment">
       <h2 id="switch">このライブハウスへのコメント<i id="changer" class="fas fa-chevron-down"></i></h2>
       <div class="comment_area">
@@ -88,15 +95,5 @@ let myRadarChart = new Chart(ctx, {
   }
 });
 })();
-</script>
-<script>
-$(function() {
-  $('#rateYo').rateYo({
-    starWidth: "20px",
-    rating: 5,
-    halfStar: true,
-    readOnly: true
-  });
-});
 </script>
 @endsection

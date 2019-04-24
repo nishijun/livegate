@@ -271,6 +271,23 @@ input.confirm {
 }
 
 /* show.blade.php */
+.catchcopy {
+  background: #e0edff;
+  position: relative;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 20px;
+  margin-top: 15px;
+}
+.catchcopy::before {
+  content: "";
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  margin-left: -15px;
+  border: 15px solid transparent;
+  border-bottom: 15px solid #e0edff;
+}
 .usericon-show {
   width: 100%;
   max-width: 980px;

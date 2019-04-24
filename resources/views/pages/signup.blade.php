@@ -46,6 +46,13 @@
         {!! Form::radio("test", "あり") !!}<span class="ml-2">あり</span>
       </div>
       <div class="form-group">
+        {!! Form::label("genres", "ジャンル") !!}
+        @foreach ($genres as $genre)
+        {!! Form::checkbox("genres[]", $genre->id, false, ["class" => "form-controll", "placeholder" => "選択して下さい"]) !!}
+        <span>{{$genre->name}}</span>
+        @endforeach
+      </div>
+      <div class="form-group">
         {!! Form::label("price", "ライブ出演費") !!}
         {!! Form::text("price", null, ["class" => "form-controll", "placeholder" => "凡そのノルマ金額を記入して下さい"]) !!}
       </div>
