@@ -14,8 +14,14 @@
 // トップページview
 Route::get('/', "PagesController@index");
 
+// Basic認証
+// Route::group(['middleware' => 'auth.very_basic'], function() {
+//   Route::get('/signup', function () { return view('pages.signup'); });
+// });
+
 // 新規登録画面view
 Route::get('/signup', "PagesController@signup");
+// ->middleware('auth.basic');
 
 // 検索機能
 Route::get('/search', 'PagesController@searchLivehouses');
@@ -46,21 +52,3 @@ Route::post('/result/{id}/sendMessage/complete', 'ContactController@complete');
 
 // ユーザー評価画面view
 Route::get('/result/{id}/evaluate', "PagesController@evaluate");
-
-// Basic認証
-// Route::group(['middleware' => 'auth.very_basic'], function() {
-//   Route::get('/signup', function () {
-//     return view('pages.signup');
-//   });
-// });
-
-// Route::group(['middleware' => 'auth.very_basic'], function() {
-//     Route::get('/signup', ['as' => 'signup', 'uses' => 'PagesController@signup']);
-//     Route::get('/page', ['as' => 'page', 'uses' => 'StartController@page']);
-// });
-
-// Route::get('/signup', [
-//     'as' => 'signup',
-//     'uses' => 'PagesController@signup',
-//     'middleware' => 'auth.very_basic'
-// ]);

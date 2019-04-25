@@ -27,10 +27,11 @@ a:hover {
   border-radius: 50%;
   background: #F06FEB;
   text-align: center;
-  padding-top: 15px;
+  padding-top: 21px;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, .3);
 }
 .scroll-top a {
+  font-size: 11px;
   display: inline-block;
   width: 100%;
   color: #fff;
@@ -131,6 +132,11 @@ header {
 .how-to-use {
   color: #844E4E;
   font-size: 15px;
+  margin-bottom: 50px;
+}
+.how-to-use-img {
+  width: 400px;
+  border: 1px solid #333;
 }
 .step {
   width: 60px;
@@ -142,6 +148,9 @@ header {
   font-weight: bold;
   color: #fff;
   margin: 15px auto;
+}
+.point-image {
+  font-size: 140px;
 }
 
 /* section3 */

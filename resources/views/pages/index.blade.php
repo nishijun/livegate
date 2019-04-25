@@ -1,7 +1,7 @@
 @extends("layout")
 @section("content")
 <div class="scroll-top">
-  <a href="#">Live Gate<br>を始める</a>
+  <a href="#">ライブハウス<br>を探す</a>
 </div>
 <!-- header -->
 <header>
@@ -43,31 +43,30 @@
   <div class="how-to-use">
     <div class="step">1</div>
     <p>条件を指定してライブハウスを検索</p>
-    <img src="../public/img/" alt="how-to-use1">
+    <img src="/img/how-to-use1.png" class="how-to-use-img">
   </div>
   <div class="how-to-use">
     <div class="step">2</div>
     <p>気になるライブハウスをクリック<br>ユーザー評価や設備、概要などの詳細情報をチェック</p>
-    <img src="../public/img/" alt="how-to-use2">
+    <img src="/img/how-to-use2.png" class="how-to-use-img">
   </div>
   <div class="how-to-use">
     <div class="step">3</div>
-    <p>条件を指定してライブハウスを検索</p>
-    <img src="../public/img/" alt="how-to-use3">
+    <p>フォームに必要事項を記入して送ればライブハウス側にメールが届きます</p>
+    <img src="/img/how-to-use3.png" class="how-to-use-img">
   </div>
 </section><!-- end of section2 -->
 
 <!-- section3 -->
 <section id="reason" class="section3 text-center py-5">
   <h2 class="section-title"><strong>Live Gate</strong>が選ばれる理由</h2>
-
-  <div class="reason">
-    <img src="../public/img/" alt="reason1">
+  <div class="reason mb-5">
+    <i class="fas fa-users point-image"></i>
     <h3>POINT 1</h3>
     <p>ユーザー評価機能があるので、<br>実際の評判が丸分かり！</p>
   </div>
   <div class="reason">
-    <img src="../public/img/" alt="reason2">
+    <i class="far fa-handshake point-image"></i>
     <h3>POINT 2</h3>
     <p>お好みの条件で絞れるので、<br>自分のニーズに合った<br>ライブハウスを探しやすい</p>
   </div>
