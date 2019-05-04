@@ -8,7 +8,7 @@
 @if (count($livehouses) > 0)
 <div class="row">
   @foreach ($livehouses as $livehouse)
-  <div class="col-6 text-center my-3">
+  <div class="col-12 col-sm-6 col-lg-4 col-xl-3 text-center my-3">
     <div class="frame m-1">
       <a href="result/{{$livehouse->id}}" class="link-show p-1">
         <div class="user-icon pb-3">

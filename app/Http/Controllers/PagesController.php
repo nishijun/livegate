@@ -82,8 +82,6 @@ class PagesController extends Controller {
         $q->where("smoking_type", $smoking_type);
       })->when($test, function($q) use($test) {
         $q->where("test", $test);
-      // })->whereHas("genres", function($q) use($genre_id){
-      //   $q->where($genre_id);
       })->get();
     } else {
       $livehouses = Livehouse::latest("created_at")->latest("updated_at")->created()->get();
